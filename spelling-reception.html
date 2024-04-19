@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A4 Paper Aspect Ratio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;700;800;900&family=Schoolbell&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Schoolbell", cursive;
+        font-weight: 400;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        padding: 0;
+        margin: 0;
+      }
+      .a4-paper {
+        height: 297mm;
+        background-color: white;
+        border: 1px solid black;
+        margin-bottom: 10mm;
+        padding: 60px;
+        break-after: page;
+        box-sizing: border-box;
+      }
+
+      .printable-area {
+        display: flex;
+        flex-direction: column; /* Change flex direction to column */
+        align-items: center; /* Center align the pages */
+        box-sizing: border-box;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        border: 1px solid #888;
+        width: 80%;
+        border-radius: 20px;
+        padding: 40px;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .header {
+        width: 100%;
+        display: flex;
+      }
+      .header h1 {
+        font-size: 4em;
+        flex: 1;
+      }
+      .sound-block {
+        font-size: 4em;
+        padding: 10px;
+        border: 1px solid black;
+        height: 100px;
+        width: 100px;
+        text-align: center;
+        color: red;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .sound-highlight {
+        color: red;
+      }
+      td {
+        font-size: 2rem;
+      }
+      td:first-child {
+        width: 130px;
+      }
+      input {
+        width: 100%;
+        height: 30px;
+      }
+
+      /* CSS */
+      .button {
+        appearance: button;
+        backface-visibility: hidden;
+        background-color: #405cf5;
+        border-radius: 6px;
+        border-width: 0;
+        box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+          rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        font-family: -apple-system, system-ui, "Segoe UI", Roboto,
+          "Helvetica Neue", Ubuntu, sans-serif;
+        font-size: 100%;
+        height: 44px;
+        line-height: 1.15;
+        margin: 12px 0 0;
+        outline: none;
+        overflow: hidden;
+        padding: 0 25px;
+        position: relative;
+        text-align: center;
+        text-transform: none;
+        transform: translateZ(0);
+        transition: all 0.2s, box-shadow 0.08s ease-in;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 100%;
+      }
+
+      .button:disabled {
+        cursor: default;
+      }
+
+      .button:focus {
+        box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+          rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
+          rgba(50, 151, 211, 0.3) 0 0 0 4px;
+      }
+      @media print {
+        body * {
+          /* display: none; */
+        }
+        .printable-area,
+        .printable-area * {
+          /* display: initial; */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="printable-area">
+      <div class="a4-paper">
+        <div class="header">
+          <h1>Spelling Sheet</h1>
+          <div class="sound-block">sh</div>
+        </div>
+        <div class="main">
+          <table class="words-table">
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="a4-paper">
+        <div class="header">
+          <h1>Spelling Test</h1>
+          <div class="sound-block">sh</div>
+        </div>
+        <div class="main">
+          <table class="test-table">
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>7.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>8.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>9.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>10.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <h1>Spelling Sheet Generator</h1>
+        <p>welcome to the spelling sheet generator</p>
+        <label for="sound">Sound (provide the sound such as 'sh','ch')</label>
+        <input type="text" id="sound" name="sound" required /><br /><br />
+        <label for="words"
+          >Words (provide words in a comma list such as toy,book,cat)</label
+        >
+
+        <input type="text" id="words" name="words" required /><br /><br />
+        <button id="generateButton" class="button">generate</button>
+      </div>
+    </div>
+
+    <script>
+      let sound = "";
+      function resizeDiv() {
+        var printableArea = document.querySelector(".printable-area");
+        var a4Divs = printableArea.querySelectorAll(".a4-paper");
+        var viewportWidth = window.innerWidth;
+        var a4Width;
+
+        // Calculate the aspect ratio of A4 paper in pixels
+        var aspectRatio = 210 / 297;
+
+        // Calculate the width of the A4 div based on the aspect ratio and viewport size
+        a4Width = 840;
+
+        // Set the width of the A4 divs
+        a4Divs.forEach(function (a4Div) {
+          a4Div.style.width = a4Width + "px";
+          a4Div.style.height = 297 * 4 + "px";
+        });
+      }
+
+      // Call the resizeDiv function when the window is resized
+      window.addEventListener("resize", resizeDiv);
+
+      // Call the resizeDiv function initially to set the dimensions of the A4 divs
+      resizeDiv();
+
+      // Get the modal element
+      var modal = document.getElementById("myModal");
+
+      // Get the close button element
+      //   var closeBtn = document.getElementsByClassName("close")[0];
+
+      // Open the modal when the page loads
+      window.onload = function () {
+        modal.style.display = "block";
+      };
+
+      modal.style.display = "none";
+
+      // Generate the pages when the form is submitted
+      var generateButton = document.getElementById("generateButton");
+      generateButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        sound = document.getElementById("sound").value;
+        var words = document.getElementById("words").value;
+        if (!sound || !words) {
+          return;
+        }
+        var wordList = words
+          .split(",")
+          .map((word) => word.trim())
+          .join(",");
+
+        // Generate the pages using the sound and words
+        var soundBlock = document.querySelectorAll(".sound-block");
+        soundBlock.forEach((soundBlock) => (soundBlock.textContent = sound));
+
+        // TODO: Add code to generate the pages with the spelling words
+        var tableRows = document.querySelectorAll(".words-table tr");
+        var wordArray = wordList.split(",");
+        tableRows.forEach(function (row, index) {
+          var cells = row.querySelectorAll("td");
+          if (wordArray[index]?.includes(sound)) {
+            cells[0].innerHTML = wordArray[index].replace(
+              sound,
+              `<span class="sound-highlight">${sound}</span>`
+            );
+          } else {
+            cells[0].textContent = wordArray[index];
+          }
+        });
+
+        // Close the modal
+        modal.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
